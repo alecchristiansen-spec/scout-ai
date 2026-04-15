@@ -1,3 +1,5 @@
+const STRIPE_LINK = "https://buy.stripe.com/cNi7sMdnR71rdIR0Y3dby00";
+
 const form = document.getElementById('chat-form');
 const messageInput = document.getElementById('message');
 const modeInput = document.getElementById('mode');
@@ -68,14 +70,14 @@ async function loadUsage() {
 }
 
 function openPricingModal() {
-  pricingModal.classList.remove('hidden');
+  pricingModal?.classList.remove('hidden');
 }
 
 function closePricingModal() {
-  pricingModal.classList.add('hidden');
+  pricingModal?.classList.add('hidden');
 }
 
-form.addEventListener('submit', async (event) => {
+form?.addEventListener('submit', async (event) => {
   event.preventDefault();
 
   const formData = new FormData();
@@ -120,7 +122,7 @@ form.addEventListener('submit', async (event) => {
   }
 });
 
-resetBtn.addEventListener('click', () => {
+resetBtn?.addEventListener('click', () => {
   form.reset();
   responseBox.classList.add('hidden');
   errorBox.classList.add('hidden');
@@ -135,41 +137,26 @@ promptButtons.forEach((button) => {
   });
 });
 
-heroUpgradeBtn?.addEventListener('click', openPricingModal);
+// Top hero buttons
+heroUpgradeBtn?.addEventListener('click', () => {
+  window.open(STRIPE_LINK, '_blank');
+});
+
 heroDemoBtn?.addEventListener('click', openPricingModal);
-upgradeBtn?.addEventListener('click', openPricingModal);
+
+// Upgrade CTA after limit
+upgradeBtn?.addEventListener('click', () => {
+  window.open(STRIPE_LINK, '_blank');
+});
+
+// Modal controls
 modalBackdrop?.addEventListener('click', closePricingModal);
 closeModalBtn?.addEventListener('click', closePricingModal);
 closeModalBtn2?.addEventListener('click', closePricingModal);
 
+// Modal checkout button
 fakeCheckoutBtn?.addEventListener('click', () => {
-  alert('Next step: connect Stripe checkout here.');
+  window.open(STRIPE_LINK, '_blank');
 });
 
 loadUsage();
-// 🔗 YOUR STRIPE PAYMENT LINK
-const STRIPE_LINK = "https://buy.stripe.com/cNi7sMdnR71rdIR0Y3dby00";
-
-// Hero button
-const heroUpgradeBtn = document.getElementById("hero-upgrade-btn");
-if (heroUpgradeBtn) {
-  heroUpgradeBtn.addEventListener("click", () => {
-    window.open(STRIPE_LINK, "_blank");
-  });
-}
-
-// CTA button (after limit)
-const upgradeBtn = document.getElementById("upgrade-btn");
-if (upgradeBtn) {
-  upgradeBtn.addEventListener("click", () => {
-    window.open(STRIPE_LINK, "_blank");
-  });
-}
-
-// Modal checkout button
-const checkoutBtn = document.getElementById("fake-checkout-btn");
-if (checkoutBtn) {
-  checkoutBtn.addEventListener("click", () => {
-    window.open(STRIPE_LINK, "_blank");
-  });
-}
