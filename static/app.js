@@ -147,3 +147,29 @@ fakeCheckoutBtn?.addEventListener('click', () => {
 });
 
 loadUsage();
+// 🔗 YOUR STRIPE PAYMENT LINK
+const STRIPE_LINK = "https://buy.stripe.com/cNi7sMdnR71rdIR0Y3dby00";
+
+// Hero button
+const heroUpgradeBtn = document.getElementById("hero-upgrade-btn");
+if (heroUpgradeBtn) {
+  heroUpgradeBtn.addEventListener("click", () => {
+    window.open(STRIPE_LINK, "_blank");
+  });
+}
+
+// CTA button (after limit)
+const upgradeBtn = document.getElementById("upgrade-btn");
+if (upgradeBtn) {
+  upgradeBtn.addEventListener("click", () => {
+    window.open(STRIPE_LINK, "_blank");
+  });
+}
+
+// Modal checkout button
+const checkoutBtn = document.getElementById("fake-checkout-btn");
+if (checkoutBtn) {
+  checkoutBtn.addEventListener("click", () => {
+    window.open(STRIPE_LINK, "_blank");
+  });
+}
